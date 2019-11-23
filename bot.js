@@ -3,7 +3,7 @@ Discord Bot - AniBot
 Description: A simple bot using discord.js as the library
 Author: Janeal Pimentel
 Created: 9/14/2019
-Modified: 9/14/2019
+Modified: 11/23/2019
 */
 
 // Variables
