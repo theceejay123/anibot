@@ -1,0 +1,5 @@
+{
+  "token": "NjE2NzgwNzM2NzIwMDExMzE3.XX0VRw.uhD4jKHamceNf2-hUjAJuWCzJso",
+  "prefix": "!",
+  "commandList": ["hello", "ping", "help", "info", "user", "cat", "dog", "meme"]
+}

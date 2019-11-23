@@ -1,0 +1,13 @@
+{
+  "name": "easybotjs",
+  "version": "1.0.0",
+  "description": "A Simple Bot Using Discord.js",
+  "main": "bot.js",
+  "scripts": {},
+  "author": "Janeal Pimentel",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "discord.js": "^11.5.1"
+  }
+}
