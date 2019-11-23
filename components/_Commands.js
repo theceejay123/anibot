@@ -5,13 +5,13 @@ class AniBot {
   Hello = msg => msg.channel.send(`Hello! ${msg.author}`);
   Ping = (msg, bot) =>
     msg.channel.send(`Pong! This message took ${bot.ping}ms.`);
-  Help = (commandList, prefix, msg) => {
-    const response = [];
-    commandList.forEach(command => {
-      response.push(`\n- ${prefix}${command}`)
-    });
+  Help = (commandList, prefix, Discord, msg, bot) => {
+    const help_list = new Discord.RichEmbed()
+      .setColor(color.aqua)
+      .setTitle("Command List")
+      .setDescription("The following commands are available for you to use:");
 
-    msg.channel.send(`Commands: ${response}`);
+    msg.channel.send({ embed: help_list });
   };
 
   ServerInfo = (Discord, msg, bot) => {

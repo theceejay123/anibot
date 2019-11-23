@@ -1,5 +1,14 @@
 {
-  "token": "NjE2NzgwNzM2NzIwMDExMzE3.XX0VRw.uhD4jKHamceNf2-hUjAJuWCzJso",
+  "token": "NjE2NzgwNzM2NzIwMDExMzE3.XdmEJw.6kFUC89H2Qid8PLxO7q7JCtyj_k",
   "prefix": "!",
-  "commandList": ["hello", "ping", "help", "info", "user", "cat", "dog", "meme"]
+  "commandList": [
+    "hello",
+    "ping",
+    "help",
+    "info",
+    "user",
+    "cat",
+    "dog",
+    "meme"
+  ]
 }
