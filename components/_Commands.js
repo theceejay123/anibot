@@ -8,9 +8,8 @@ class AniBot {
   Help = (commandList, prefix, msg) => {
     const response = [];
     commandList.forEach(command => {
-      response.push(`\n- ${prefix}${command}`)
+      response.push(`\n- ${prefix}${command}`);
     });
-
     msg.channel.send(`Commands: ${response}`);
   };
 
