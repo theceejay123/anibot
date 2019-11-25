@@ -9,7 +9,24 @@ class AniBot {
     const help_list = new Discord.RichEmbed()
       .setColor(color.aqua)
       .setTitle("Command List")
-      .setDescription("The following commands are available for you to use:");
+      .setDescription("The following commands are available for you to use:")
+      .setThumbnail(msg.guild.iconURL)
+      .setAuthor(`${msg.guild.name} List`, msg.guild.iconURL);
+
+    commandList.forEach(item => {
+      help_list.addField(
+        `**${item.toUpperCase()} Command:**`,
+        `${"```"}${prefix}${item}${"```"}`,
+        true
+      );
+    });
+
+    help_list
+      .setTimestamp()
+      .setFooter(
+        `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
+        bot.user.displayAvatarURL
+      );
 
     msg.channel.send({ embed: help_list });
   };
