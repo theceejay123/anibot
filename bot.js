@@ -31,12 +31,6 @@ bot.on("message", async msg => {
   const commandList = config.commandList;
   const msgArray = msg.content.split(" ");
   const cmd = msgArray[0];
-  const isHelp =
-    cmd.startsWith(prefix, 0) && commandList[2] === cmd.split(prefix)[1];
-
-  if (isHelp) {
-    aniBot.Help(commandList, prefix, msg);
-  }
 
   switch (cmd.toLocaleLowerCase()) {
     case `${prefix}${commandList[0]}`:
@@ -44,6 +38,9 @@ bot.on("message", async msg => {
       break;
     case `${prefix}${commandList[1]}`:
       aniBot.Ping(msg, bot);
+      break;
+    case `${prefix}${commandList[2]}`:
+      aniBot.Help(commandList, prefix, Discord, msg, bot);
       break;
     case `${prefix}${commandList[3]}`:
       aniBot.ServerInfo(Discord, msg, bot);
