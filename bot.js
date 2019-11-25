@@ -6,15 +6,25 @@ Created: 9/14/2019
 Modified: 11/23/2019
 */
 
-// Variables
 const Discord = require("discord.js");
+const fs = require("fs");
+const Client = require("./client/_client");
 const config = require("./config.json");
 
-// Component
-const AniBot = require("./components/_Commands");
+/* Components */
+const bot = new Client();
+bot.commands = new Discord.Collection();
 
-const bot = new Discord.Client({ disableEveryone: true });
-const aniBot = new AniBot();
+const queue = new Map();
+
+const commandList = fs
+  .readdirSync("./commands")
+  .filter(file => file.endsWith(".js"));
+
+for (const file of commandList) {
+  const command = require(`./commands/${file}`);
+  bot.commands.set(command.name, command);
+}
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online.`);
@@ -26,39 +36,16 @@ bot.on("ready", async () => {
 
 bot.on("message", async msg => {
   if (msg.author.bot || msg.channel.type === "dm") return;
+  if (!msg.content.startsWith(config.prefix)) return;
 
-  const prefix = config.prefix;
-  const commandList = config.commandList;
-  const msgArray = msg.content.split(" ");
-  const cmd = msgArray[0];
+  const args = msg.content.slice(1).split(/ +/);
+  const c_name = args.shift().toLowerCase();
+  const command = bot.commands.get(c_name);
 
-  switch (cmd.toLocaleLowerCase()) {
-    case `${prefix}${commandList[0]}`:
-      aniBot.Hello(msg);
-      break;
-    case `${prefix}${commandList[1]}`:
-      aniBot.Ping(msg, bot);
-      break;
-    case `${prefix}${commandList[2]}`:
-      aniBot.Help(commandList, prefix, Discord, msg, bot);
-      break;
-    case `${prefix}${commandList[3]}`:
-      aniBot.ServerInfo(Discord, msg, bot);
-      break;
-    case `${prefix}${commandList[4]}`:
-      aniBot.UserInfo(Discord, msg, bot);
-      break;
-    case `${prefix}${commandList[5]}`:
-      aniBot.Picture(Discord, msg, bot, "cat");
-      break;
-    case `${prefix}${commandList[6]}`:
-      aniBot.Picture(Discord, msg, bot, "dog");
-      break;
-    case `${prefix}${commandList[7]}`:
-      aniBot.Picture(Discord, msg, bot, "meme", true);
-      break;
-    default:
-      break;
+  try {
+    command.execute(msg, args);
+  } catch (error) {
+    return;
   }
 });
 
