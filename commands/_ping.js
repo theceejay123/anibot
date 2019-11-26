@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const tinycolor = require("tinycolor2");
+const colors = require("../colors.js");
 
 module.exports = {
   name: "ping",
@@ -14,7 +15,7 @@ module.exports = {
       const response = choices[Math.floor(Math.random() * choices.length)];
 
       const ping = {
-        color: 0xaaaaaa,
+        color: parseInt(`0x${tinycolor(colors.lightBlue.light).toHex()}`),
         description: `${response} It took ${milliseconds}ms to ping.`,
         timestamp: new Date(),
         footer: {
