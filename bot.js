@@ -43,7 +43,7 @@ bot.on("message", async msg => {
   const command = bot.commands.get(c_name) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(c_name));
 
   try {
-    command.execute(msg, args);
+    command.execute(bot, msg, args);
   } catch (error) {
     return;
   }
