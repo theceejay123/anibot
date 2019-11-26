@@ -40,7 +40,7 @@ bot.on("message", async msg => {
 
   const args = msg.content.slice(1).split(/ +/);
   const c_name = args.shift().toLowerCase();
-  const command = bot.commands.get(c_name);
+  const command = bot.commands.get(c_name) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(c_name));
 
   try {
     command.execute(msg, args);

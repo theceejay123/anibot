@@ -1,6 +1,7 @@
 module.exports = {
   name: "kick",
   description: "Kick a player from the guild.",
+  guildOnly: true,
   execute(msg, args = null) {
     const member = msg.guild.member(
       msg.mentions.users.first() || msg.guild.members.get(args[0])
@@ -14,7 +15,7 @@ module.exports = {
       return msg.channel.send(
         `Onii-chan! You don't have permissions to use this command.`
       );
-    if (member.hasPermission("MANAGE_MESSAGES") || member.hasPermission("ADMINISTRATOR"))
+    if (member.hasPermission("MANAGE_MESSAGES") && msg.member.guild.roles.find(role => role.name.toLowerCase() === "bots").name.toLowerCase() !== "onpaperhq")
       return msg.channel.send(
         `Sorry Onii-chan! but it seems you can't kick this person...`
       );
