@@ -1,4 +1,4 @@
-const colors = require("../colors");
+const colors = require("../util/colors");
 const Discord = require("discord.js");
 
 module.exports = {
@@ -11,10 +11,10 @@ module.exports = {
       .setTitle("Server Info")
       .setThumbnail(msg.guild.iconURL)
       .setAuthor(`${msg.guild.name} Info`, msg.guild.iconURL)
-      .addField("**Server Name:**", `${msg.guild.name}`, true)
-      .addField("**Server Owner:**", `${msg.guild.owner}`, true)
-      .addField("**Member Count:**", `${msg.guild.memberCount}`, true)
-      .addField("**Role Count:**", `${msg.guild.roles.size}`, true)
+      .addField("**Server Name:**", `${msg.guild.name}`)
+      .addField("**Server Owner:**", `${msg.guild.owner}`)
+      .addField("**Member Count:**", `${msg.guild.memberCount}`)
+      .addField("**Role Count:**", `${msg.guild.roles.size}`)
       .setFooter(
         `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
         bot.user.displayAvatarURL

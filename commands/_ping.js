@@ -1,5 +1,5 @@
-const colors = require("../colors");
-const honorifics = require("../honorifics");
+const colors = require("../util/colors");
+const honorifics = require("../util/honorifics");
 
 module.exports = {
   name: "ping",
