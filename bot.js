@@ -9,7 +9,8 @@ Modified: 11/23/2019
 const Discord = require("discord.js");
 const fs = require("fs");
 const Client = require("./client/_client");
-const config = require("./config.json");
+
+require("dotenv").config();
 
 /* Components */
 const bot = new Client();
@@ -19,7 +20,7 @@ const queue = new Map();
 
 const commandList = fs
   .readdirSync("./commands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 
 for (const file of commandList) {
   const command = require(`./commands/${file}`);
@@ -30,17 +31,19 @@ bot.on("ready", async () => {
   console.log(`${bot.user.username} is online.`);
   bot.user.setActivity("w/ Rin-chan", {
     type: "STREAMING",
-    url: "http://www.twitch.tv/onpaperhq"
+    url: "http://www.twitch.tv/onpaperhq",
   });
 });
 
-bot.on("message", async msg => {
+bot.on("message", async (msg) => {
   if (msg.author.bot || msg.channel.type === "dm") return;
-  if (!msg.content.startsWith(config.prefix)) return;
+  if (!msg.content.startsWith(process.env.DISCORD_PREFIX)) return;
 
   const args = msg.content.slice(1).split(/ +/);
   const c_name = args.shift().toLowerCase();
-  const command = bot.commands.get(c_name) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(c_name));
+  const command =
+    bot.commands.get(c_name) ||
+    bot.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(c_name));
 
   try {
     command.execute(bot, msg, args);
@@ -50,6 +53,8 @@ bot.on("message", async msg => {
 });
 
 bot
-  .login(config.token)
-  .then(console.log(`Do not share this token to anyone: ${config.token}`))
+  .login(process.env.TOKEN_KEY)
+  .then(
+    console.log(`Do not share this token to anyone: ${process.env.TOKEN_KEY}`)
+  )
   .catch(console.error);

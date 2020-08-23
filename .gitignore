@@ -106,3 +106,6 @@ dist
 # Config.json other files
 config.json
 *.bat
+
+# .ENV files
+.env

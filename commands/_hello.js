@@ -1,6 +1,5 @@
 const colors = require("../util/colors");
 const honorifics = require("../util/honorifics");
-const { prefix } = require("../config.json");
 
 module.exports = {
   name: "hello",
@@ -15,12 +14,12 @@ module.exports = {
       embed: {
         color: parseInt(`0x${colors.Pink.main}`),
         title: `Hiya, ${name}-${response}!`,
-        description: `If ya need help, just type **${prefix}help** for more info.`,
+        description: `If ya need help, just type **${process.env.DISCORD_PREFIX}help** for more info.`,
         footer: {
           text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-          icon_url: bot.user.displayAvatarURL
-        }
-      }
+          icon_url: bot.user.displayAvatarURL,
+        },
+      },
     });
-  }
+  },
 };
