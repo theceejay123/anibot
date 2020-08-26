@@ -8,16 +8,16 @@ module.exports = {
   description: "Shortens a link.",
   execute(bot, msg, args) {
     msg.channel.send("Generating Link...").then((bot_msg) => {
-      const url = `https://sh.onpaper.ca/link`;
-      fetch(url, {
+      const link = `https://sh.onpaper.ca/link`;
+      fetch(link, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify({
+        body: {
           url: args,
-        }),
+        },
       }).then(async (response) => {
         const jsonData = await response.json();
         msg.channel.send(jsonData.link);
