@@ -8,7 +8,7 @@ module.exports = {
   description: "Shortens a link.",
   execute(bot, msg, args) {
     msg.channel.send("Generating Link...").then((bot_msg) => {
-      const url = `https://sh.onpaper.ca/link`;
+      const url = `http://sh.onpaper.ca/link`;
       fetch(url, {
         headers: {
           Accept: "application/json",
