@@ -11,18 +11,15 @@ module.exports = {
       const link = `http://sh.onpaper.ca/link`;
       fetch(link, {
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        method: "POST",
-        body: {
-          url: args,
-        },
+        method: "post",
+        body: JSON.stringify({
+          url: args[0],
+        }),
       }).then(async (response) => {
-        const jsonData = await response.json();
-        await msg.channel.send(jsonData.link);
-        msg.delete();
-        bot_msg.delete();
+        const data = await response.json();
+        bot_msg.edit(data.link);
       });
     });
   },
