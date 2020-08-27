@@ -19,6 +19,7 @@ module.exports = {
         }),
       }).then(async (response) => {
         const data = await response.json();
+        msg.delete();
         bot_msg.edit(data.link);
       });
     });
