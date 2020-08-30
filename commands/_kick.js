@@ -10,8 +10,7 @@ module.exports = {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;
-    const h_response =
-      honorifics[Math.floor(Math.random() * honorifics.length)];
+    const h_response = honorifics.randomize();
 
     const mentioned = msg.guild.member(
       msg.mentions.users.first() || msg.guild.members.get(args[0])

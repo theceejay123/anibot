@@ -1,4 +1,4 @@
-module.exports = [
+const honorifics = [
   "kyun",
   "kun",
   "san",
@@ -9,3 +9,9 @@ module.exports = [
   "senpai",
   "sama"
 ];
+
+const randomize = () => {
+  return honorifics[Math.floor(Math.random() * honorifics.length)];
+}
+
+module.exports = { randomize }

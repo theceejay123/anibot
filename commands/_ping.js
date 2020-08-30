@@ -11,8 +11,7 @@ module.exports = {
         ? msg.member.nickname
         : msg.member.user.username;
       const milliseconds = bot_msg.createdTimestamp - msg.createdTimestamp;
-      const h_response =
-        honorifics[Math.floor(Math.random() * honorifics.length)];
+      const h_response = honorifics.randomize();
       const phrases = [
         `Hai! There you go ${name}-${h_response}. (」°ロ°)」`,
         `Are you sure this is you ${name}-${h_response}? (＿ ＿*) Z z z`,

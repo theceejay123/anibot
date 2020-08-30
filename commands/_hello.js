@@ -9,7 +9,7 @@ module.exports = {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;
-    const response = honorifics[Math.floor(Math.random() * honorifics.length)];
+    const response = honorifics.randomize();
     msg.channel.send({
       embed: {
         color: parseInt(`0x${colors.Pink.main}`),
