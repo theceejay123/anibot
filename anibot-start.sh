@@ -1,2 +1,2 @@
 #!/bin/sh
-node bot.js
+yarn start
