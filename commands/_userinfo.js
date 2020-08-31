@@ -5,7 +5,7 @@ module.exports = {
   name: "user",
   aliases: ["u", "userinfo"],
   description: "The information of the user.",
-  execute(bot, msg, args) {
+  execute(bot, msg, serverQueue, args) {
     const mentioned = msg.guild.member(
       msg.mentions.users.first() || msg.guild.members.get(args[0])
     );
@@ -26,5 +26,5 @@ module.exports = {
         bot.user.displayAvatarURL
       );
     msg.channel.send({ embed: userinfo });
-  }
+  },
 };

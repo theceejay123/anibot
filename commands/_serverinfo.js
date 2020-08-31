@@ -5,7 +5,7 @@ module.exports = {
   name: "info",
   aliases: ["server", "serverinfo", "i"],
   description: "The Information of the Server.",
-  execute(bot, msg, args) {
+  execute(bot, msg, serverQueue, args) {
     const serverinfo = new Discord.RichEmbed()
       .setColor(colors.lightGreen.dark)
       .setTitle("Server Info")
@@ -21,5 +21,5 @@ module.exports = {
       );
 
     msg.channel.send({ embed: serverinfo });
-  }
+  },
 };

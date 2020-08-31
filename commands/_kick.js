@@ -6,7 +6,7 @@ module.exports = {
   aliases: ["k", "boot", "throw"],
   description: "Kick a player from the guild.",
   guildOnly: true,
-  execute(bot, msg, args) {
+  execute(bot, msg, serverQueue, args) {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;
@@ -23,9 +23,9 @@ module.exports = {
           description: `...there isn't a user mentioned ${name}-${h_response}.`,
           footer: {
             text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-            icon_url: bot.user.displayAvatarURL
-          }
-        }
+            icon_url: bot.user.displayAvatarURL,
+          },
+        },
       });
     if (!msg.member.hasPermission("MANAGE_MESSAGES", false, true, true))
       return msg.channel.send({
@@ -34,9 +34,9 @@ module.exports = {
           description: `${name}-${h_response}! You don't have permissions to use this command.`,
           footer: {
             text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-            icon_url: bot.user.displayAvatarURL
-          }
-        }
+            icon_url: bot.user.displayAvatarURL,
+          },
+        },
       });
     if (
       mentioned.hasPermission("MANAGE_MESSAGES", false, true, true) ||
@@ -48,9 +48,9 @@ module.exports = {
           description: `Sorry ${name}-${h_response}! but it seems you can't kick this person...`,
           footer: {
             text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-            icon_url: bot.user.displayAvatarURL
-          }
-        }
+            icon_url: bot.user.displayAvatarURL,
+          },
+        },
       });
 
     return msg.guild
@@ -63,12 +63,12 @@ module.exports = {
             description: `${mentioned.displayName} was kicked from the server. ${name}-${h_response} meanie (▰˘︹˘▰)`,
             footer: {
               text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-              icon_url: bot.user.displayAvatarURL
-            }
-          }
+              icon_url: bot.user.displayAvatarURL,
+            },
+          },
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.message);
         msg.channel.send({
           embed: {
@@ -76,10 +76,10 @@ module.exports = {
             description: `An error occured. Please try again later.`,
             footer: {
               text: `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-              icon_url: bot.user.displayAvatarURL
-            }
-          }
+              icon_url: bot.user.displayAvatarURL,
+            },
+          },
         });
       });
-  }
+  },
 };

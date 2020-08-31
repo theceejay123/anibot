@@ -6,11 +6,11 @@ module.exports = {
   name: "cat",
   aliases: ["kitty", "feline", "kat"],
   description: "Picture of a cat.",
-  execute(bot, msg, args) {
-    msg.channel.send("Generating Picture...").then(bot_msg => {
+  execute(bot, msg, serverQueue, args) {
+    msg.channel.send("Generating Picture...").then((bot_msg) => {
       const url = `http://aws.random.cat/meow`;
       const title = `${msg.guild.name} Cats!`;
-      fetch(url).then(async response => {
+      fetch(url).then(async (response) => {
         const jsonData = await response.json();
         const picture = new Discord.RichEmbed()
           .setColor(colors.lightBlue.dark)
@@ -25,5 +25,5 @@ module.exports = {
         bot_msg.edit({ embed: picture });
       });
     });
-  }
+  },
 };

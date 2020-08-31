@@ -6,7 +6,7 @@ module.exports = {
   name: "shorten",
   aliases: ["s", "sh", "short"],
   description: "Shortens a link.",
-  execute(bot, msg, args) {
+  execute(bot, msg, serverQueue, args) {
     msg.channel.send("Generating Link...").then((bot_msg) => {
       const link = `http://sh.onpaper.ca/link`;
       fetch(link, {

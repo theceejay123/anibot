@@ -5,8 +5,8 @@ module.exports = {
   name: "ping",
   aliases: ["latency", "p"],
   description: "Pings the user.",
-  execute(bot, msg, args) {
-    msg.channel.send("Pinging...").then(bot_msg => {
+  execute(bot, msg, serverQueue, args) {
+    msg.channel.send("Pinging...").then((bot_msg) => {
       const name = msg.member.nickname
         ? msg.member.nickname
         : msg.member.user.username;
@@ -17,7 +17,7 @@ module.exports = {
         `Are you sure this is you ${name}-${h_response}? (＿ ＿*) Z z z`,
         `Please tell me ${name}-${h_response} is joking...  ＼(º □ º l|l)/`,
         `Take that ${name}-${h_response}! ┬┴┬┴┤･ω･)ﾉ`,
-        `${name}-${h_response} is sooooo slow	(.❛ ᴗ ❛.)`
+        `${name}-${h_response} is sooooo slow	(.❛ ᴗ ❛.)`,
       ];
       const p_response = phrases[Math.floor(Math.random() * phrases.length)];
       const ping = {
@@ -29,11 +29,11 @@ module.exports = {
           text: `Bot Latency: ${milliseconds}ms | Execution time: ${Math.round(
             bot.ping
           )}ms`,
-          icon_url: bot.user.displayAvatarURL
-        }
+          icon_url: bot.user.displayAvatarURL,
+        },
       };
 
       bot_msg.edit({ embed: ping });
     });
-  }
+  },
 };

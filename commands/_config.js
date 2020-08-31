@@ -2,7 +2,7 @@ module.exports = {
   name: "config",
   description:
     "Configurations for each server. Such as setting which role is a moderator",
-  execute(bot, msg, args) {
+  execute(bot, msg, serverQueue, args) {
     console.log(msg.content);
     // const member = msg.guild.ownerID === msg.author.id;
     // if (member) {
@@ -10,5 +10,5 @@ module.exports = {
     // } else {
     //   return msg.channel.send(`Sorry onii-chan! It seems you don't have access to this command~!`)
     // };
-  }
+  },
 };
