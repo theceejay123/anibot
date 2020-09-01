@@ -15,7 +15,7 @@ module.exports = {
       .on("end", () => {
         serverQueue.songs.shift();
         console.log(serverQueue.songs);
-        module.exports.play(guild, serverQueue.songs[0]);
+        module.exports.play(guild, serverQueue.songs[0], serverQueue, bot);
       })
       .on("error", () => console.error(error));
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
