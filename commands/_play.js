@@ -34,8 +34,8 @@ module.exports = {
     const songConstruct = {
       title: songInfo.videoDetails.title,
       url: songInfo.videoDetails.video_url,
-      duration: songInfo.videoDetails.lengthSeconds
-    }
+      duration: songInfo.videoDetails.lengthSeconds,
+    };
 
     if (!serverQueue) {
       const queueConstruct = {
@@ -44,8 +44,8 @@ module.exports = {
         connection: null,
         songs: [],
         volume: 5,
-        playing: true
-      }
+        playing: true,
+      };
 
       bot.queue.set(msg.guild.id, queueConstruct);
       queueConstruct.songs.push(songConstruct);
@@ -55,13 +55,20 @@ module.exports = {
         play(msg.guild, queueConstruct.songs[0], serverQueue, bot);
       } catch (error) {
         bot.queue.delete(msg.guild.id);
-        console.error(`There was an error connecting to the voice channel: ${error}`)
-        return msg.channel.send(`There was an error connecting to the voice channel -  Contact the creator of ANIBOT to find out more.`)
+        console.error(
+          `There was an error connecting to the voice channel: ${error}`
+        );
+        return msg.channel.send(
+          `There was an error connecting to the voice channel -  Contact the creator of ANIBOT to find out more.`
+        );
       }
+    } else {
+      serverQueue.songs.push(songConstruct);
+      return msg.channel.send(
+        `${songConstruct.title} has been added to the queue!`
+      );
     }
-    else {
-      serverQueue.songs.push(song);
-      return message.channel.send(`${songConstruct.title} has been added to the queue!`);
-    }
+
+    msg.delete(10000);
   },
 };
