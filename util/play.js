@@ -12,7 +12,7 @@ module.exports = {
 
     const dispatcher = serverQueue.connection
       .playStream(ytdl(song.url), { filter: "audioonly" })
-      .on("finish", () => {
+      .on("end", () => {
         serverQueue.songs.shift();
         console.log(serverQueue.songs);
         module.exports.play(guild, serverQueue.songs[0]);
