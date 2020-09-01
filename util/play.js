@@ -14,10 +14,11 @@ module.exports = {
       .playStream(ytdl(song.url), { filter: "audioonly" })
       .on("finish", () => {
         serverQueue.songs.shift();
+        console.log(serverQueue.songs);
         play(guild, serverQueue.songs[0]);
       })
       .on("error", () => console.error(error));
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-    serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+    serverQueue.message.send(`Start playing: **${song.title}**`);
   },
 };

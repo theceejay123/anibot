@@ -65,7 +65,7 @@ module.exports = {
     } else {
       serverQueue.songs.push(songConstruct);
       return msg.channel.send(
-        `${songConstruct.title} has been added to the queue!`
+        `**${songConstruct.title}** has been added to the queue!`
       );
     }
 
