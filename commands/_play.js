@@ -1,23 +1,32 @@
 const ytdl = require("ytdl-core");
-const { play } = require("../util/play");
+const {
+  play
+} = require("../util/music/play");
 
 module.exports = {
   name: "play",
   aliases: ["p", "pl"],
   description: "Play music",
   async execute(bot, msg, serverQueue, args) {
-    const voiceChannel = msg.member.voiceChannel;
+    const voiceChannel = msg.member.voice.channel;
 
     // Checks to see if the user that issued the command is in a voice channel
-    if (!voiceChannel)
+    if (!voiceChannel) {
+      msg.delete({
+        timeout: 1000
+      });
       return msg.channel.send(
         "You must be in a voice chat to play some tunes!"
       );
+    }
 
     const permissions = voiceChannel.permissionsFor(msg.client.user);
 
     // Checks to see if the bot has permissions in the voice channel
     if (!permissions.has("CONNECT")) {
+      msg.delete({
+        timeout: 1000
+      });
       return msg.channel.send(
         "It seems I don't have permissions to be in the voice chat"
       );
@@ -25,6 +34,9 @@ module.exports = {
 
     // Checks to see if the bot has permissions to speak inside the voice channel
     if (!permissions.has("SPEAK")) {
+      msg.delete({
+        timeout: 1000
+      });
       return msg.channel.send(
         "It seems I don't have permissions to speak inside the voice chat"
       );
@@ -52,7 +64,7 @@ module.exports = {
 
       try {
         queueConstruct.connection = await voiceChannel.join();
-        play(msg.guild, queueConstruct.songs[0], serverQueue, bot);
+        play(msg.guild, queueConstruct.songs[0], bot);
       } catch (error) {
         bot.queue.delete(msg.guild.id);
         console.error(
@@ -64,12 +76,16 @@ module.exports = {
       }
     } else {
       serverQueue.songs.push(songConstruct);
-      msg.delete(10000);
+      await msg.delete({
+        timeout: 1000
+      });
       return msg.channel.send(
         `**${songConstruct.title}** has been added to the queue!`
       );
     }
 
-    msg.delete(10000);
+    msg.delete({
+      timeout: 1000
+    });
   },
 };
