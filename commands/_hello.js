@@ -5,7 +5,7 @@ module.exports = {
   name: "hello",
   aliases: ["yo", "hi"],
   description: "Say hello!",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;

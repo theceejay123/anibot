@@ -4,7 +4,7 @@ const honorifics = require("../util/honorifics");
 module.exports = {
   name: "help",
   aliases: ["h", "?"],
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;

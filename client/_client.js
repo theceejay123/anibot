@@ -1,3 +1,5 @@
+"use strict";
+
 const { Client, Collection } = require("discord.js");
 
 module.exports = class extends Client {

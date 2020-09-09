@@ -15,47 +15,27 @@ const _PinkShade = "f2b5d4";
 module.exports = {
   lightBlue: {
     main: _lightBlue,
-    light: tinycolor(_lightBlue)
-      .lighten(lightenRate)
-      .toHex(),
-    dark: tinycolor(_lightBlue)
-      .darken(darkenRate)
-      .toHex()
+    light: tinycolor(_lightBlue).lighten(lightenRate).toHex(),
+    dark: tinycolor(_lightBlue).darken(darkenRate).toHex(),
   },
   lightGreen: {
     main: _lightGreen,
-    light: tinycolor(_lightGreen)
-      .lighten(lightenRate)
-      .toHex(),
-    dark: tinycolor(_lightGreen)
-      .darken(darkenRate)
-      .toHex()
+    light: tinycolor(_lightGreen).lighten(lightenRate).toHex(),
+    dark: tinycolor(_lightGreen).darken(darkenRate).toHex(),
   },
   lightCreamPink: {
     main: _lightCreamPink,
-    light: tinycolor(_lightCreamPink)
-      .lighten(lightenRate)
-      .toHex(),
-    dark: tinycolor(_lightCreamPink)
-      .darken(darkenRate)
-      .toHex()
+    light: tinycolor(_lightCreamPink).lighten(lightenRate).toHex(),
+    dark: tinycolor(_lightCreamPink).darken(darkenRate).toHex(),
   },
   Pink: {
     main: _Pink,
-    light: tinycolor(_Pink)
-      .lighten(lightenRate)
-      .toHex(),
-    dark: tinycolor(_Pink)
-      .darken(darkenRate)
-      .toHex()
+    light: tinycolor(_Pink).lighten(lightenRate).toHex(),
+    dark: tinycolor(_Pink).darken(darkenRate).toHex(),
   },
   PinkShade: {
     main: _PinkShade,
-    light: tinycolor(_PinkShade)
-      .lighten(lightenRate)
-      .toHex(),
-    dark: tinycolor(_PinkShade )
-      .darken(darkenRate)
-      .toHex()
-  }
+    light: tinycolor(_PinkShade).lighten(lightenRate).toHex(),
+    dark: tinycolor(_PinkShade).darken(darkenRate).toHex(),
+  },
 };

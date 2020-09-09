@@ -43,11 +43,8 @@ bot.on("message", async (msg) => {
     bot.commands.get(c_name) ||
     bot.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(c_name));
 
-  // Adds a serverQueue for music
-  const serverQueue = bot.queue.get(msg.guild.id);
-
   try {
-    command.execute(bot, msg, serverQueue, args);
+    command.execute(bot, msg, args);
   } catch (error) {
     console.log(error);
     return;

@@ -6,7 +6,7 @@ module.exports = {
   name: "cat",
   aliases: ["kitty", "feline", "kat"],
   description: "Picture of a cat.",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     msg.channel.send("Generating Picture...").then((bot_msg) => {
       const url = `http://aws.random.cat/meow`;
       const title = `${msg.guild.name} Cats!`;
@@ -19,7 +19,7 @@ module.exports = {
           .setTimestamp()
           .setFooter(
             `@AniBot | Created by OnPaperHQ | ${bot.user.tag}`,
-            bot.user.displayAvatarURL
+            bot.user.displayAvatarURL()
           );
 
         bot_msg.edit({ embed: picture });

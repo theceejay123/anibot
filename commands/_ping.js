@@ -5,11 +5,11 @@ module.exports = {
   name: "ping",
   aliases: ["latency", "pi"],
   description: "Pings the user.",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     msg.channel.send("Pinging...").then((bot_msg) => {
-      const name = msg.member.nickname ?
-        msg.member.nickname :
-        msg.member.user.username;
+      const name = msg.member.nickname
+        ? msg.member.nickname
+        : msg.member.user.username;
       const milliseconds = bot_msg.createdTimestamp - msg.createdTimestamp;
       const h_response = honorifics.randomize();
       const phrases = [
@@ -34,7 +34,7 @@ module.exports = {
       };
 
       bot_msg.edit({
-        embed: ping
+        embed: ping,
       });
     });
   },

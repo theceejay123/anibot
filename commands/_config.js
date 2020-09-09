@@ -2,7 +2,7 @@ module.exports = {
   name: "config",
   description:
     "Configurations for each server. Such as setting which role is a moderator",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     console.log(msg.content);
     // const member = msg.guild.ownerID === msg.author.id;
     // if (member) {

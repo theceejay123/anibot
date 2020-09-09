@@ -7,17 +7,18 @@ module.exports = {
     if (!song) {
       serverQueue.voiceChannel.leave();
       bot.queue.delete(guild.id);
-      return serverQueue.textChannel.send(
-        "There is no song currently in the queue. Leaving!"
-      ).then(msg => {
-        msg.delete({
-          timeout: 2000
+      return serverQueue.textChannel
+        .send("There is no song currently in the queue. Leaving!")
+        .then((msg) => {
+          msg.delete({
+            timeout: 2000,
+          });
         })
-      }).catch(console.error);
+        .catch(console.error);
     }
 
     const dispatcher = serverQueue.connection
-      .play(ytdl(song.url))
+      .play(ytdl(song.url), { filter: "audioonly" })
       .on("finish", () => {
         serverQueue.songs.shift();
         module.exports.play(guild, serverQueue.songs[0], bot);

@@ -5,7 +5,7 @@ module.exports = {
   name: "user",
   aliases: ["u", "userinfo"],
   description: "The information of the user.",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     const mentioned = msg.guild.member(
       msg.mentions.users.first() || msg.guild.members.get(args[0])
     );

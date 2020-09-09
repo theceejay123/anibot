@@ -1,19 +1,18 @@
 const ytdl = require("ytdl-core");
-const {
-  play
-} = require("../util/music/play");
+const { play } = require("../util/music/play");
 
 module.exports = {
   name: "play",
   aliases: ["p", "pl"],
   description: "Play music",
-  async execute(bot, msg, serverQueue, args) {
+  async execute(bot, msg, args) {
+    const serverQueue = bot.queue.get(msg.guild.id);
     const voiceChannel = msg.member.voice.channel;
 
     // Checks to see if the user that issued the command is in a voice channel
     if (!voiceChannel) {
       msg.delete({
-        timeout: 1000
+        timeout: 1000,
       });
       return msg.channel.send(
         "You must be in a voice chat to play some tunes!"
@@ -25,7 +24,7 @@ module.exports = {
     // Checks to see if the bot has permissions in the voice channel
     if (!permissions.has("CONNECT")) {
       msg.delete({
-        timeout: 1000
+        timeout: 1000,
       });
       return msg.channel.send(
         "It seems I don't have permissions to be in the voice chat"
@@ -35,7 +34,7 @@ module.exports = {
     // Checks to see if the bot has permissions to speak inside the voice channel
     if (!permissions.has("SPEAK")) {
       msg.delete({
-        timeout: 1000
+        timeout: 1000,
       });
       return msg.channel.send(
         "It seems I don't have permissions to speak inside the voice chat"
@@ -77,7 +76,7 @@ module.exports = {
     } else {
       serverQueue.songs.push(songConstruct);
       await msg.delete({
-        timeout: 1000
+        timeout: 1000,
       });
       return msg.channel.send(
         `**${songConstruct.title}** has been added to the queue!`
@@ -85,7 +84,7 @@ module.exports = {
     }
 
     msg.delete({
-      timeout: 1000
+      timeout: 1000,
     });
   },
 };

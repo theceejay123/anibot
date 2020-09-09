@@ -6,7 +6,7 @@ module.exports = {
   aliases: ["k", "boot", "throw"],
   description: "Kick a player from the guild.",
   guildOnly: true,
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     const name = msg.member.nickname
       ? msg.member.nickname
       : msg.member.user.username;

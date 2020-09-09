@@ -6,7 +6,7 @@ module.exports = {
   name: "dog",
   aliases: ["doggy", "pup", "puppy", "canine"],
   description: "Generates pictures of dogs.",
-  execute(bot, msg, serverQueue, args) {
+  execute(bot, msg, args) {
     msg.channel.send("Generating Picture...").then((bot_msg) => {
       const url = `https://dog.ceo/api/breeds/image/random`;
       const title = `${msg.guild.name} Dogs!`;
